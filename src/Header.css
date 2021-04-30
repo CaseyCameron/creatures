@@ -1,0 +1,16 @@
+.Header {
+  margin: 5px;
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  grid-gap: 20px;
+  align-items: center;
+  box-shadow: 5px 5px 5px lightgray;
+}
+
+.Header .logo {
+  width: 100%;
+}
+
+.Header h1 {
+  margin: 0;
+}
