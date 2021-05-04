@@ -1,18 +1,23 @@
 import { Component } from 'react';
-import Header from './Header';
-import Footer from './Footer';
+import React from 'react';
+import request from 'superagent';
+
 import CreatureList from './CreatureList';
 import CreatureSearch from './CreatureSearch';
 import creatures from './creatures';
+import Footer from './Footer';
+import Header from './Header';
 import './App.css';
-import React from 'react';
 
 class App extends Component {
   state = {
-    creatures: creatures
+    creatures: []
   }
 
-
+  async componentDidMount(){
+    const response = await request.get('https://lab-06-server-setup.herokuapp.com/api/creatures');
+    this.setState({ creatures: response.body });
+  }
 
   handleSearch = ({ nameFilter, sortField }) => {
     const nameRegex = new RegExp(nameFilter, 'i');
